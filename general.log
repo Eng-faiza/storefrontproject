@@ -1,0 +1,68 @@
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Cannot execute silk_profile as silk is not installed correctly.
+Cannot execute silk_profile as silk is not installed correctly.
+Cannot execute silk_profile as silk is not installed correctly.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\storefront\settings.py changed, reloading.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\storefront\settings.py changed, reloading.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\storefront\settings.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Cannot execute silk_profile as silk is not installed correctly.
+Cannot execute silk_profile as silk is not installed correctly.
+Cannot execute silk_profile as silk is not installed correctly.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\playground\views.py changed, reloading.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\playground\views.py changed, reloading.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\playground\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Cannot execute silk_profile as silk is not installed correctly.
+Cannot execute silk_profile as silk is not installed correctly.
+Cannot execute silk_profile as silk is not installed correctly.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\playground\views.py changed, reloading.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\playground\views.py changed, reloading.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\playground\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Cannot execute silk_profile as silk is not installed correctly.
+Cannot execute silk_profile as silk is not installed correctly.
+Cannot execute silk_profile as silk is not installed correctly.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\playground\views.py changed, reloading.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\playground\views.py changed, reloading.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\playground\views.py changed, reloading.
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Watching for file changes with StatReloader
+Cannot execute silk_profile as silk is not installed correctly.
+Cannot execute silk_profile as silk is not installed correctly.
+Cannot execute silk_profile as silk is not installed correctly.
+Watching for file changes with StatReloader
+Cannot execute silk_profile as silk is not installed correctly.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\storefront\settings.py changed, reloading.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\storefront\settings.py changed, reloading.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\storefront\settings.py changed, reloading.
+D:\Self-learning\practices\DjangoPractices\fr\storefront\storefront\settings.py changed, reloading.
+2026-10-05 12:06:08,099 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2026-10-05 12:06:08,105 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2026-10-05 12:06:08,419 (WARNING) - silk.profiling.profiler - Cannot execute silk_profile as silk is not installed correctly.
+2026-10-05 12:06:08,433 (WARNING) - silk.profiling.profiler - Cannot execute silk_profile as silk is not installed correctly.
+2026-10-05 12:06:09,279 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2026-10-05 12:06:09,295 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2026-10-05 12:06:09,523 (WARNING) - silk.profiling.profiler - Cannot execute silk_profile as silk is not installed correctly.
+2026-10-05 12:06:09,574 (WARNING) - silk.profiling.profiler - Cannot execute silk_profile as silk is not installed correctly.
+2026-10-05 12:24:49,633 (INFO) - django.utils.autoreload - D:\Self-learning\practices\DjangoPractices\fr\storefront\manage.py changed, reloading.
+2026-10-05 12:24:49,641 (INFO) - django.utils.autoreload - D:\Self-learning\practices\DjangoPractices\fr\storefront\manage.py changed, reloading.
+2026-10-05 12:24:49,647 (INFO) - django.utils.autoreload - D:\Self-learning\practices\DjangoPractices\fr\storefront\manage.py changed, reloading.
+2026-10-05 12:24:49,652 (INFO) - django.utils.autoreload - D:\Self-learning\practices\DjangoPractices\fr\storefront\manage.py changed, reloading.
+2026-10-05 12:26:59,240 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2026-10-05 12:26:59,896 (WARNING) - silk.profiling.profiler - Cannot execute silk_profile as silk is not installed correctly.
+2026-10-05 12:31:18,051 (WARNING) - django.request - Unauthorized: /store/collections/
+2026-10-05 12:31:18,068 (WARNING) - django.request - Forbidden: /store/collections/
+2026-10-05 12:31:18,084 (WARNING) - django.request - Bad Request: /store/collections/
+2026-10-05 12:33:21,703 (INFO) - django.utils.autoreload - D:\Self-learning\practices\DjangoPractices\fr\storefront\storefront\settings\common.py changed, reloading.
+2026-10-05 12:33:23,916 (INFO) - django.utils.autoreload - Watching for file changes with StatReloader
+2026-10-05 12:33:24,369 (WARNING) - silk.profiling.profiler - Cannot execute silk_profile as silk is not installed correctly.

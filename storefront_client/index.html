@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Storefront Image Upload</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <section class="upload-panel" aria-labelledby="page-title">
+      <p class="eyebrow">Storefront media</p>
+      <h1 id="page-title">Add a product image</h1>
+      <p class="intro">Choose a product and upload a clear image to its gallery.</p>
+
+      <form id="upload-form">
+        <label for="product-id">Product ID</label>
+        <input id="product-id" name="product-id" type="number" min="1" value="1" required>
+
+        <label for="image-input">Product image</label>
+        <input id="image-input" name="image" type="file" accept="image/*" required>
+        <div id="preview" class="preview" hidden>
+          <img id="preview-image" alt="Selected product preview">
+        </div>
+
+        <button id="upload-button" type="submit">Upload image</button>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="products-panel" aria-labelledby="products-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Catalog</p>
+          <h2 id="products-title">Products</h2>
+        </div>
+        <button id="refresh-button" class="secondary-button" type="button">Refresh</button>
+      </div>
+      <div id="products-list" class="products-list" aria-live="polite">
+        <p class="muted">Loading products...</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">Storefront client <span aria-hidden="true">&middot;</span> Django API</footer>
+  <script src="index.js" defer></script>
+</body>
+</html>

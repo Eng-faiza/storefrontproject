@@ -1,0 +1,466 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff3f8">
+    <title>A little surprise for my friend</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --ink: #482638;
+            --muted: #936c7d;
+            --paper: #fff7fa;
+            --green: #d94f87;
+            --green-dark: #ad3568;
+            --coral: #ef78a7;
+            --yellow: #f4c7d9;
+            --line: rgba(173, 53, 104, .16);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-width: 320px;
+            min-height: 100vh;
+            margin: 0;
+            color: var(--ink);
+            background-color: var(--paper);
+            background-image: radial-gradient(rgba(217, 79, 135, .12) .8px, transparent .8px);
+            background-size: 22px 22px;
+            font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+        }
+
+        button { font: inherit; }
+
+        .page-shell {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+            padding: 0 6.2vw;
+        }
+
+        .topbar {
+            display: flex;
+            min-height: 64px;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .wordmark, .edition {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .wordmark-mark {
+            display: grid;
+            width: 29px;
+            height: 29px;
+            place-items: center;
+            border-radius: 50%;
+            color: #fff;
+            background: var(--green);
+            font-family: Georgia, serif;
+            font-size: 17px;
+            font-style: italic;
+            letter-spacing: 0;
+        }
+
+        .edition { color: var(--muted); letter-spacing: 1px; }
+        .edition-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+
+        main {
+            display: grid;
+            width: min(760px, 100%);
+            flex: 1;
+            align-items: center;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin: 0 auto;
+            padding: 8px 0 14px;
+        }
+
+        .copy { position: relative; z-index: 1; text-align: center; animation: arrive .7s ease both; }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 23px;
+            color: var(--green);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1.6px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before { width: 25px; height: 2px; background: var(--coral); content: ""; }
+
+        h1 {
+            max-width: 100%;
+            margin: 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 52px;
+            font-weight: 400;
+            line-height: .99;
+        }
+
+        h1 span { color: var(--green); font-style: italic; }
+
+        .intro {
+            max-width: 430px;
+            margin: 7px auto 0;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .challenge {
+            display: flex;
+            width: min(410px, 100%);
+            align-items: center;
+            gap: 13px;
+            padding: 14px 16px;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            background: rgba(255, 255, 255, .55);
+        }
+
+        .challenge-icon {
+            display: grid;
+            width: 35px;
+            height: 35px;
+            flex: 0 0 35px;
+            place-items: center;
+            border-radius: 50%;
+            color: var(--green-dark);
+            background: #e4ede5;
+            font-size: 18px;
+        }
+
+        .challenge-copy { flex: 1; }
+        .challenge-title { display: block; font-size: 12px; font-weight: 800; }
+        .challenge-hint { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+        .progress-count { color: var(--green); font-size: 12px; font-weight: 800; white-space: nowrap; }
+
+        .gift-side {
+            display: grid;
+            min-height: 220px;
+            place-items: center;
+            animation: arrive .7s .12s ease both;
+        }
+
+        .gift-stage {
+            position: relative;
+            display: grid;
+            width: min(100%, 220px);
+            aspect-ratio: 1;
+            place-items: center;
+            isolation: isolate;
+        }
+
+        .orbit {
+            position: absolute;
+            z-index: -1;
+            width: 88%;
+            aspect-ratio: 1;
+            border: 1px solid rgba(217, 79, 135, .22);
+            border-radius: 50%;
+        }
+
+        .orbit::before, .orbit::after {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            content: "";
+        }
+
+        .orbit::before { top: 11%; left: 15%; background: var(--yellow); }
+        .orbit::after { right: 5%; bottom: 25%; width: 8px; height: 8px; background: var(--coral); }
+
+        .gift-button {
+            position: relative;
+            display: grid;
+            width: min(82%, 300px);
+            aspect-ratio: 1;
+            place-items: center;
+            padding: 0;
+            overflow: visible;
+            border: 0;
+            border-radius: 22px;
+            background: #fff;
+            box-shadow: 0 18px 48px rgba(173, 53, 104, .14);
+            cursor: pointer;
+            transition: transform .25s ease, box-shadow .25s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .gift-button:hover { transform: translateY(-6px) rotate(-1deg); box-shadow: 0 22px 52px rgba(173, 53, 104, .22); }
+        .gift-button:focus-visible { outline: 3px solid var(--green); outline-offset: 6px; }
+
+        .gift-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 22px;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+            animation: bob 3.2s ease-in-out infinite;
+        }
+
+        .gift-button:hover .gift-image { animation-play-state: paused; }
+
+        .tap-label {
+            position: absolute;
+            right: -20px;
+            bottom: 15%;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border: 1px solid rgba(173, 53, 104, .12);
+            border-radius: 3px;
+            color: #fff;
+            background: var(--green);
+            box-shadow: 0 8px 18px rgba(173, 53, 104, .24);
+            font-size: 12px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .tap-label span { color: #f5d579; font-size: 16px; }
+
+        .gift-note {
+            position: absolute;
+            top: 12%;
+            right: 6%;
+            color: var(--green);
+            font-family: Georgia, serif;
+            font-size: 15px;
+            font-style: italic;
+            transform: rotate(8deg);
+        }
+
+        .footer {
+            display: flex;
+            min-height: 44px;
+            align-items: center;
+            justify-content: space-between;
+            border-top: 1px solid var(--line);
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .footer strong { color: var(--green); font-weight: 800; }
+
+        dialog {
+            width: min(460px, calc(100% - 32px));
+            max-width: none;
+            padding: 0;
+            overflow: visible;
+            border: 1px solid rgba(173, 53, 104, .18);
+            border-radius: 5px;
+            color: var(--ink);
+            background: var(--paper);
+            box-shadow: 0 28px 90px rgba(92, 35, 61, .24);
+        }
+
+        dialog::backdrop { background: rgba(92, 35, 61, .42); backdrop-filter: blur(5px); }
+
+        .surprise-card { position: relative; padding: 42px 38px 36px; text-align: center; }
+
+        .close-button {
+            position: absolute;
+            top: 13px;
+            right: 13px;
+            display: grid;
+            width: 35px;
+            height: 35px;
+            place-items: center;
+            border: 1px solid var(--line);
+            border-radius: 50%;
+            color: var(--ink);
+            background: transparent;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .surprise-stamp {
+            display: grid;
+            width: 62px;
+            height: 62px;
+            place-items: center;
+            margin: 0 auto 19px;
+            border-radius: 50%;
+            color: var(--green-dark);
+            background: #ffe1ee;
+            font-size: 29px;
+        }
+
+        .surprise-kicker { color: var(--coral); font-size: 10px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; }
+
+        .surprise-card h2 {
+            margin: 12px 0;
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 39px;
+            font-weight: 400;
+            line-height: 1.05;
+        }
+
+        .surprise-card h2 em { color: var(--green); }
+
+        .surprise-message { margin: 0 auto 23px; color: var(--muted); font-size: 14px; line-height: 1.75; }
+
+        .django-secret {
+            margin: 0 0 23px;
+            padding: 14px;
+            border-left: 3px solid var(--green);
+            color: var(--green-dark);
+            background: #fff0f6;
+            font-family: Georgia, serif;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .again-button {
+            min-height: 46px;
+            padding: 0 20px;
+            border: 0;
+            border-radius: 3px;
+            color: #fff;
+            background: var(--green);
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 800;
+            transition: background .2s ease, transform .2s ease;
+        }
+
+        .again-button:hover { transform: translateY(-2px); background: var(--green-dark); }
+
+        .confetti {
+            position: fixed;
+            z-index: 10;
+            top: -15px;
+            width: 9px;
+            height: 14px;
+            pointer-events: none;
+            animation: fall var(--duration) cubic-bezier(.2, .7, .4, 1) forwards;
+        }
+
+        @keyframes arrive { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bob { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-8px) rotate(1deg); } }
+        @keyframes fall { to { transform: translate3d(var(--drift), 105vh, 0) rotate(760deg); opacity: .85; } }
+
+        @media (max-width: 760px) {
+            .page-shell { padding: 0 22px; }
+            .topbar { min-height: 60px; }
+            main { grid-template-columns: 1fr; gap: 0; padding: 20px 0 12px; }
+            .eyebrow { justify-content: center; margin-bottom: 10px; }
+            h1 { margin: 0 auto; font-size: 42px; }
+            .intro { margin: 8px auto 0; font-size: 13px; }
+            .gift-side { min-height: 0; }
+            .gift-stage { width: min(72vw, 280px); }
+            .gift-button { width: 82%; }
+            .tap-label { right: -10px; bottom: 10%; }
+            .gift-note { top: 5%; right: 0; }
+            .footer { min-height: 42px; gap: 12px; font-size: 10px; }
+            .surprise-card { padding: 40px 25px 28px; }
+        }
+
+        @media (max-width: 380px) {
+            h1 { font-size: 42px; }
+            .edition { font-size: 9px; }
+            .wordmark { font-size: 10px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="wordmark"><span class="wordmark-mark">f</span> For my friend</div>
+            <div class="edition"><span class="edition-dot"></span> Just for you</div>
+        </header>
+
+        <main>
+            <section class="copy" aria-labelledby="page-title">
+                <div class="eyebrow">A little gift</div>
+                <h1 id="page-title">Surprise,<br><span>my friend.</span></h1>
+                <p class="intro">Made with love, just for you.</p>
+            </section>
+
+            <section class="gift-side" aria-label="Your surprise gift">
+                <div class="gift-stage">
+                    <div class="orbit" aria-hidden="true"></div>
+                    <span class="gift-note" aria-hidden="true">a little love</span>
+                    <button class="gift-button" id="open-gift" type="button" aria-label="Open your surprise gift">
+                        <img class="gift-image" src="{% static 'gift.jpg' %}" alt="A bright red gift box waiting to be opened">
+                        <span class="tap-label"><span aria-hidden="true">✦</span> Open your gift</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <span>Made with <strong>love.</strong></span>
+            <span>For you ♡</span>
+        </footer>
+    </div>
+
+    <dialog id="surprise-dialog" aria-labelledby="surprise-title">
+        <div class="surprise-card">
+            <button class="close-button" id="close-surprise" type="button" aria-label="Close surprise">&times;</button>
+            <div class="surprise-stamp" aria-hidden="true">✿</div>
+            <div class="surprise-kicker">You did it!</div>
+            <h2 id="surprise-title">Django is<br><em>complete!</em></h2>
+            <p class="surprise-message">Congratulations, my friend! You kept learning, worked through the tricky parts, and made it to the finish.</p>
+            <blockquote class="django-secret">Be proud of how far you’ve come. This is just the beginning of what you can build.</blockquote>
+            <button class="again-button" id="again-button" type="button">Thank you ♡</button>
+        </div>
+    </dialog>
+
+    <script>
+        const giftButton = document.getElementById('open-gift');
+        const surpriseDialog = document.getElementById('surprise-dialog');
+        const closeButton = document.getElementById('close-surprise');
+        const againButton = document.getElementById('again-button');
+        const confettiColors = ['#d94f87', '#f4c7d9', '#ef78a7', '#ad3568', '#fff0f6'];
+
+        function celebrate() {
+            for (let index = 0; index < 46; index += 1) {
+                const piece = document.createElement('span');
+                piece.className = 'confetti';
+                piece.style.left = `${Math.random() * 100}vw`;
+                piece.style.backgroundColor = confettiColors[index % confettiColors.length];
+                piece.style.setProperty('--drift', `${Math.random() * 180 - 90}px`);
+                piece.style.setProperty('--duration', `${1.8 + Math.random() * 1.8}s`);
+                document.body.appendChild(piece);
+                piece.addEventListener('animationend', () => piece.remove(), { once: true });
+            }
+        }
+
+        giftButton.addEventListener('click', () => {
+            surpriseDialog.showModal();
+            celebrate();
+        });
+
+        closeButton.addEventListener('click', () => surpriseDialog.close());
+        againButton.addEventListener('click', () => surpriseDialog.close());
+        surpriseDialog.addEventListener('click', (event) => {
+            if (event.target === surpriseDialog) surpriseDialog.close();
+        });
+    </script>
+</body>
+</html>
